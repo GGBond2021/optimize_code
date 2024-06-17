@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大家一起来优化代码啦</title>
+</head>
+
+<body>
+    <script>
+        const options = [2];
+        const result = [
+            { value: 73.9 },
+            { value: 3.9 },
+            { value: 1 },
+            { value: 1.2 },
+            { value: 1.9 },
+            { value: 1.99 },
+            { value: 2 },
+            { value: 0.9 },
+            { value: 0.8 },
+            { value: 0.11 },
+            { value: 1 },
+            { value: 1 },
+            { value: 2.3 },
+            { value: 2.3 },
+            { value: 2.4 },
+            { value: 2.9 },
+            { value: 3 },
+            { value: 2.9 },
+            { value: 3.5 },
+            { value: 4.0 },
+            { value: 3.9 },
+            { value: 33.9 },
+        ];
+        let dataMap = {
+            1: [],
+            2: [],
+            4: [],
+        };
+        let tableData = result.filter(item => {
+            if(item.value <= 1) {
+                // 1
+                if (options.includes(1)) {
+                    dataMap[1].push(item);
+                    return options.includes(1);
+                };
+            } else if (item.value > 1 && item.value <= 2) {
+                // 2
+                if(options.includes(2)) {
+                    dataMap[2].push(item);
+                    return options.includes(2);
+                }
+            } else if (item.value > 2 && item.value <= 4) {
+                // 4
+                if(options.includes(4)) {
+                    dataMap[4].push(item);
+                    return options.includes(4);
+                }
+            }
+        });
+        console.log('tableData', tableData);
+        console.log(dataMap);
+        const innerData = [
+            { label: '4H内', value: dataMap[4] },
+            { label: '2H内', value: dataMap[2] },
+            { label: '1H内', value: dataMap[1] },
+        ];
+        console.log('innerData', innerData);
+    </script>
+</body>
+
+</html>
